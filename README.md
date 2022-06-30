@@ -13,7 +13,6 @@
 web使用flask搭建
 
 
-<img src="imgs/1.png">
-<img src="imgs/2.png">
-<img src="imgs/3.png">
-
+[![jKLo5j.png](https://s1.ax1x.com/2022/06/30/jKLo5j.png)](https://imgtu.com/i/jKLo5j)
+[![jKL7Ps.png](https://s1.ax1x.com/2022/06/30/jKL7Ps.png)](https://imgtu.com/i/jKL7Ps)
+[![jKLIaQ.png](https://s1.ax1x.com/2022/06/30/jKLIaQ.png)](https://imgtu.com/i/jKLIaQ)
