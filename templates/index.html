@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>学创杯助手 by:Qiudie</title>
+    <link rel="icon" href="/static/img/icon.png">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <style>
+        #box {
+            background: #fff url("/static/img/bg.jpg") no-repeat center 0;
+        }
+    </style>
+</head>
+
+<body>
+<div id="box"></div>
+<div class="index">
+    <input name="ip" class="login_user" placeholder="请输入IP" id="ip" value="221.12.107.218">
+    <input name="port" class="login_user" placeholder="请输入端口" id="port" value="8088">
+    <input name="courseid" class="login_user" placeholder="请输入课程号" id="courseid" value="286">
+
+    <button type="submit" class="submit" onclick="conn()">连接</button>
+    <div class="connectionStatus">
+        <p id="sockets" style="color: #FF0000">sooket未连接</p>
+        <p id="xcbs" style="color: #FF0000">xcb服务器未连接</p>
+    </div>
+    <div class="Ribbon">
+        <select name="tableSelect" size="5" id="tableSelect">
+        </select>
+        <button onclick="getCompanyCode()">获取公司代码</button>
+        <button onclick="getHistoricalDecisions()">获取历史决策</button>
+        <button onclick="getProductDesign()">获取产品设计</button>
+        <button onclick="getCashFlow()">获取现金流</button>
+
+        <button disabled>更改公司名</button>
+        <br>
+        <button disabled>购买原材料</button>
+        <button disabled>获取管理员密码</button>
+        <button disabled>强制加入班级</button>
+        <button disabled>租用厂房</button>
+        <button disabled>购买厂房</button>
+        <br>
+        <button onclick="singlePage('广告表')">广告表</button>
+        <button onclick="singlePage('原料表')">原料表</button>
+        <button onclick="singlePage('成品表')">成品表</button>
+        <button onclick="singlePage('工人表')">工人表</button>
+        <button onclick="singlePage('报价表')">报价表</button>
+    </div>
+</div>
+<div class="hd">
+    <form id="form1" action="" target="target1" method="post"></form>
+    <iframe class="lsjc" id="lsjc" name="target1" src=""></iframe>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script type="text/javascript" src="//cdn.socket.io/4.5.1/socket.io.min.js"></script>
+<script type="text/javascript">
+    const socket = io();
+    const sockets = document.getElementById("sockets");
+    const xcbs = document.getElementById("xcbs");
+    const lsjc = document.getElementById("lsjc");
+
+    xcbs.style.color = "red";
+    socket.on('connection', function (data) {
+        sockets.style.color = "green";
+        sockets.innerText = "sooket已连接"
+    });
+
+    function conn() {
+        var ip = document.getElementById('ip').value;
+        var port = document.getElementById('port').value;
+        var courseid = document.getElementById('courseid').value;
+        if (ip === '') {
+            alert("ip为空");
+        } else if (port === '') {
+            alert("端口为空");
+        } else if (courseid === '') {
+            alert('课程号为空')
+        } else {
+            socket.emit('xcb_conn', {'ip': ip, 'port': port, 'courseid': courseid});//监听回复的消息
+            socket.on('xcb_con', function (data) {
+                if (data.code === '200') {
+                    alert(data.msg);
+                    xcbs.style.color = "green"
+                    xcbs.innerText = "xcb服务器已连接"
+                    window.XCB = data.data
+                } else {
+                    alert('ERROR:' + data.msg);
+                }
+            });
+        }
+
+    }
+
+    function getCompanyCode() {
+        for (const id in window.XCB) {
+            const newOption = document.createElement("option");
+            newOption.text = window.XCB[id];
+            newOption.value = id;
+            document.getElementById("tableSelect").add(newOption);
+        }
+    }
+
+
+    function getHistoricalDecisions() {
+        var ip = document.getElementById('ip').value;
+        var port = document.getElementById('port').value;
+        var courseid = document.getElementById('courseid').value;
+        var companyid = document.getElementById("tableSelect").value;
+        console.log(companyid)
+        var time = prompt('输入第几季度(1,2,3,4,5,6,7,8)')
+
+        if ("12345678".search(time) === -1) {
+            alert("输入季度有误，重新输入")
+        } else {
+            socket.emit("getHistoricalDecisions", {
+                "companyid": companyid,
+                "courseid": courseid,
+                "time": time,
+                "ip": ip,
+                "prot": port,
+            })
+
+            socket.on('getHistoricalDecisions', function (json) {
+                if (json['code'] === '200') {
+                    document.getElementById('lsjc').src = "/static/mb.html";
+                } else {
+                    alert('ERROR:' + json['msg']);
+                }
+            });
+        }
+    }
+
+    function getProductDesign() {
+        var companyid = document.getElementById("tableSelect").value;
+        socket.emit("getProductDesign", {
+            "companyid": companyid,
+        })
+        socket.on('getProductDesign', function (data) {
+            console.log(data)
+            alert(JSON.stringify(data.msg))
+        })
+    }
+
+    function getCashFlow() {
+        var companyid = document.getElementById("tableSelect").value;
+        socket.emit("getCashFlow", {
+            "companyid": companyid,
+        })
+        socket.on('getCashFlow', function (data) {
+            console.log(data)
+            alert(JSON.stringify(data.msg))
+        })
+    }
+
+    function singlePage(name) {
+        var ip = document.getElementById('ip').value;
+        var port = document.getElementById('port').value;
+        var courseid = document.getElementById('courseid').value;
+        var companyid = document.getElementById("tableSelect").value;
+
+        var D = {
+            "报价表": `http://${ip}:${port}/BSTCS/student/CSO/A/CSO_A_2.jsp?courseid=${courseid}&companyid=${companyid}`,
+            "广告表": `http://${ip}:${port}/BSTCS/student/CMO/A/CMO_A_2.jsp?courseid=${courseid}&companyid=${companyid}`,
+            "原料表": `http://${ip}:${port}/BSTCS/student/CPO/A/CPO_A_1.jsp?courseid=${courseid}&companyid=${companyid}`,
+            "成品表": `http://${ip}:${port}/BSTCS/student/CEO/C/CEO_C_8.jsp?courseid=${courseid}&companyid=${companyid}&taskid=0`,
+            "工人表": `http://${ip}:${port}/BSTCS/student/CPO/A/CPO_A_5.jsp?courseid=${courseid}&companyid=${companyid}&studentid=1384&title=`
+        }
+        document.getElementById('lsjc').src = D[name];
+    }
+
+
+</script>

@@ -1,0 +1,585 @@
+
+    
+  
+
+
+
+
+
+
+<html>
+<head><meta http-equiv=Pragma content=no-cache><meta http-equiv=expires content=0><meta http-equiv="cache-control" content="no-store"> 
+		<meta http-equiv=Pragma content=no-cache><meta http-equiv=expires content=0><meta http-equiv="cache-control" content="no-store"> 
+	    <meta http-equiv="Content-Language" content="zh-cn">
+		<title>null</title>
+		<link rel="stylesheet" type="text/css" href="/BSTCS/style/style.css" id="link1">
+		<script src="/BSTCS/script/utils.js" language="javascript"></script>
+		<script src="/BSTCS/script/Ajax.js" language="javascript"></script>
+		<link rel="STYLESHEET" type="text/css" href="/BSTCS/dhtmlxTabbar/css/dhtmlXTabbar.css">
+		<script  src="/BSTCS/dhtmlxTabbar/js/dhtmlXCommon.js"></script>
+		<script  src="/BSTCS/dhtmlxTabbar/js/dhtmlXTabbar.js"></script>
+		<script  src="/BSTCS/dhtmlxTabbar/js/dhtmlXTabbar_start.js"></script>
+	<style type="text/css">
+		.f1{
+			color:#008000;/*决策前现金*/
+		}
+		.f2{
+			color:#FF8000;/*本次决策现金*/
+		}
+		.f3{
+			color:#0080FF;/*决策后现金*/
+		}
+		.f4{
+			color:#FF0000;/*决策名称*/
+		}
+		.f5{
+			background-color:#D9FFD7;/*操作DIV颜色*/
+		}
+		.f6{
+			background-color:#FFDDDD;/*删除DIV颜色*/	
+		}
+		.f7{
+			background-color:D9FFD7;/*决策时间DIV颜色*/	
+			color:#7D7D7D;
+		}		
+		.f8{
+			color:red;/*醒目*/
+		}
+	</style>
+</HEAD>
+<BODY   topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+
+
+	
+
+<table width="100%" id="table100" cellspacing="0" cellpadding="0" height='100%'  bordercolorlight="#FF0000">
+	<tr>
+		<td width="29" height="34" background="/BSTCS/image/window/1.JPG">
+		</td>
+		<td height="34" background="/BSTCS/image/window/2.JPG">&nbsp;</td>
+		<td width="29" height="34" background="/BSTCS/image/window/3.JPG">
+		</td>
+	</tr>
+	<tr>
+		<td width="29" background="/BSTCS/image/window/4.JPG">&nbsp;</td>
+		<td valign='top'   background="/BSTCS/image/window/5.JPG">
+		
+
+<div id="card" class='card'  style='position:absolute;width:470px;height:400px;display:none;'> 
+<span style="cursor:move;"></span> 
+</div> 
+
+               
+<script>
+function show(employee_id)
+{
+var tip=ajax_get("/BSTCS/EmployeeCardAction.do?action=1&databasename=null&courseid=286&companyid=1411&time=5&employee_id="+employee_id,false);
+tabbar.setContentHTML("a1",tip);
+var tip1=ajax_get("/BSTCS/EmployeeCardAction.do?action=2&databasename=null&courseid=286&companyid=1411&time=5&employee_id="+employee_id,false);
+tabbar.setContentHTML("a2",tip1);
+var tip2=ajax_get("/BSTCS/EmployeeCardAction.do?action=3&databasename=null&courseid=286&companyid=1411&time=5&employee_id="+employee_id,false);
+tabbar.setContentHTML("a3",tip2);
+showcard("card",1);
+
+}
+function show_purch(){
+var url = "BSTCS/show.do?page=12&materialsid="+2+"&databasename=null&toDayOne="+ new Date().getTime()+"&companyid=1411"+"&month=6&courseid=286";
+tabbar.setContentHTML("a1",url);
+}
+tabbar=new dhtmlXTabBar("card","top");
+tabbar.setImagePath("/BSTCS/dhtmlxTabbar/imgs/");
+tabbar.setSkinColors("#FCFBFC","#F4F3EE");
+
+tabbar.setStyle("winScarf");      
+tabbar.addTab("a1","个人简历","100px");
+tabbar.addTab("a2","基本素质","100px");
+tabbar.addTab("a3","岗位薪资","100px");
+tabbar.setTabActive("a1");
+
+</script>    
+	<table border="0" width="100%" id="table1" cellspacing="1" bordercolorlight="#C0C0C0" cellpadding="0" class="table">
+<form action="/BSTCS/student/CEO/C/CEO_C_5.jsp" method="post" name="form_q" >
+<input type="hidden" value="null" name="databasename" >
+		<tr>
+
+			<td class="tabletitletext" style='text-align:left;'>
+			<input type=hidden  value=286 name=courseid>
+			<input type="hidden"  value="-1" name="sectionid">
+			<input type="hidden"  value="null" name="title">
+			<input type=hidden value=yes name=studentid>
+			<select name='time' onchange='document.form_q.submit();'>
+			
+			<option value=1 >1季度
+			</option>
+			
+			<option value=2 selected>2季度
+			</option>
+			
+			<option value=3 >3季度
+			</option>
+			
+			<option value=4 >4季度
+			</option>
+			
+			<option value=5 >5季度
+			</option>
+			
+			</select>
+
+			<select style='display:none' name='companyid' onchange='document.form_q.submit();'>
+			
+			<option value=1409 >
+			1(1)
+			</option>
+			
+			<option value=1410 >
+			2(2)
+			</option>
+			
+			<option value=1411 selected>
+			3(3)
+			</option>
+			
+			<option value=1412 >
+			4(4)
+			</option>
+			
+			<option value=1413 >
+			5(5)
+			</option>
+			
+			<option value=1414 >
+			6(6)
+			</option>
+			
+			<option value=1415 >
+			7(7)
+			</option>
+			
+			<option value=1416 >
+			给我康康(8)
+			</option>
+			
+			<option value=1417 >
+			杰哥不要(9)
+			</option>
+			
+			<option value=1418 >
+			10(10)
+			</option>
+			
+			<option value=1419 >
+			11(11)
+			</option>
+			
+			<option value=1420 >
+			12(12)
+			</option>
+			
+			<option value=1421 >
+			阿白(13)
+			</option>
+			
+			<option value=1422 >
+			14(14)
+			</option>
+			
+			<option value=1423 >
+			15(15)
+			</option>
+			
+			<option value=1424 >
+			小一(16)
+			</option>
+			
+			<option value=1425 >
+			17(17)
+			</option>
+			
+			<option value=1426 >
+			18(18)
+			</option>
+			
+			<option value=1427 >
+			杰(19)
+			</option>
+			
+			<option value=1428 >
+			报不交(20)
+			</option>
+			
+			<option value=1429 >
+			21(21)
+			</option>
+			
+			<option value=1430 >
+			22(22)
+			</option>
+			
+			<option value=1432 >
+			X(24)
+			</option>
+			
+			<option value=1433 >
+			25(25)
+			</option>
+			
+			<option value=1434 >
+			26(26)
+			</option>
+			
+			<option value=1435 >
+			27(27)
+			</option>
+			
+			<option value=1436 >
+			28(28)
+			</option>
+			
+			<option value=1437 >
+			29(29)
+			</option>
+			
+			<option value=1438 >
+			30(30)
+			</option>
+			
+			<option value=1439 >
+			31(31)
+			</option>
+			
+			<option value=1440 >
+			32(32)
+			</option>
+			
+			<option value=1441 >
+			33(33)
+			</option>
+			
+			<option value=1442 >
+			34(34)
+			</option>
+			
+			<option value=1449 >
+			23(23)
+			</option>
+			
+			</select>
+			<select name="section" onchange='document.form_q.submit();'>
+				<option value="-1" selected>--所有决策信息--</option>
+				<option value="CFO" >财务决策信息</option>
+				<option value="CTO" >设计研发决策信息</option>
+				<option value="CPO" >生产决策信息</option>				
+				<option value="CHO" >人力资源决策信息</option>
+				<option value="CMO" >市场决策信息</option>
+				<option value="CSO" >销售决策信息</option>
+				<option value="auto" >自动更新信息</option>
+
+			</select>
+			</td>
+		</tr>
+
+	</table>		
+		<table width="100%" border=0  cellpadding=0 cellspacing=1  align=center class="table">
+		<tr class='tableheadtext'><td colspan=15>3(3)2季度决策历史明细</td></tr>
+		<tr class='tabletitletext'>
+		<td width='10%'>决策项目</td><td width='10%'>决策时间</td><td width='70%'>决策明细</td>
+		</tr>
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.29</div><fieldset class="f5">应收账款:      <font class="f4"> 51,597.00 </font><br>结算前现金余量: <font class="f1"> 233,445.78</font><br>结算应收账款:  <font class="f2"> 51,597.00</font><br>结算后现金余量: <font class="f3"> 285,042.78</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.317</div><fieldset class="f5">应付账款:      <font class="f4"> 25,201.22 </font><br>结算前现金余量: <font class="f1"> 285,042.78</font><br>结算应付账款:  <font class="f2"> 25,201.22</font><br>结算后现金余量: <font class="f3"> 259,841.56</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.343</div><fieldset class="f5">上缴上季度税费<br>增值税：<font class=f1>18,365.31</font><br>上缴前现金余量：<font class=f2>259,841.56</font><br>上缴增值税：  <font class=f3>18,365.31</font><br>上缴后现金余量： <font class=f1>241,476.25</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.36</div><fieldset class="f5">上缴上季度税费<br>城建税：        <font class=f1>1,285.57</font><br>教育附加税：    <font class=f2>550.96</font><br>地方教育附加税：<font class=f3>367.31</font><br>所得税：       <font class=f1>0.00</font><br>合计：         <font class=f2>2,203.84</font><br>上缴前现金余量：<font class=f3>241,476.25</font><br>上缴以上税费：  <font class=f1>2,203.84</font><br>上缴后现金余量：<font class=f2>239,272.41</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.37</div><fieldset class="f5">季度初扣除办公室租金：<font class="f4">10,000.00</font><br>扣除前现金余量：     <font class="f1">239,272.41</font><br>扣除办公室租金：     <font class="f2">10,000.00</font><br>扣除后现金余量：     <font class="f3">229,272.41</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.4</div><fieldset class="f5">原料：<font class="f4">106658号金属包装盒</font> 付款期限已到<br>原料购买时间：       <font class="f1">1季度</font><br>原料数量：           <font class="f3">501</font><br>原料到货时间：       <font class="f2">2季度</font><br>原料付款时间：       <font class="f3">2季度</font><br>扣除前现金余量：     <font class="f1">229,272.41</font><br>扣除原料采购金额：   <font class="f2">3,165.32</font><br>扣除后现金余量：     <font class="f3">226,107.09</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.417</div><fieldset class="f5">原料：<font class="f4">106660号发光装置</font> 付款期限已到<br>原料购买时间：       <font class="f1">1季度</font><br>原料数量：           <font class="f3">501</font><br>原料到货时间：       <font class="f2">2季度</font><br>原料付款时间：       <font class="f3">2季度</font><br>扣除前现金余量：     <font class="f1">226,107.09</font><br>扣除原料采购金额：   <font class="f2">2,532.25</font><br>扣除后现金余量：     <font class="f3">223,574.84</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.433</div><fieldset class="f5">原料：<font class="f4">106672号发声装置</font> 付款期限已到<br>原料购买时间：       <font class="f1">1季度</font><br>原料数量：           <font class="f3">2001</font><br>原料到货时间：       <font class="f2">2季度</font><br>原料付款时间：       <font class="f3">2季度</font><br>扣除前现金余量：     <font class="f1">223,574.84</font><br>扣除原料采购金额：   <font class="f2">5,267.63</font><br>扣除后现金余量：     <font class="f3">218,307.21</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.53</div><fieldset class="f6"><b><font class="f4">季度初公司现金：218,307.21</font></b></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.577</div><fieldset class="f5">自动更新利润表。</fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:30:02.65</div><fieldset class="f5">自动更新资产负债表。</fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>银行借款</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:31:24.503</div><fieldset class="f5" calss="tipinfo">申请一笔短期借款<br>申请前现金余量：<span class=number_begin>218,307.21</span><br>申请的借款金额：<span class=number_cost>81,618.00</span><br>借款利率：<span class=number_cost>5.00%</span><br>扣除借款利息：<span class=number_cost>4,080.90</span><br>实际获得现金：<span class=number_cost>77,537.10</span><br>借款后现金余量：<span class=number_end>295,844.31</span></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>渠道开发</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:34:29.507</div><fieldset class="f5">投入对:<font class="f4"> 广州 </font> 下的 <font class="f4">零售渠道 </font> 的开发<br>扣除前现金余量: <font class="f1">295,844.31</font><br>扣除市场开发费用：<font class="f2">20,000.00</font><br>扣除后现金余量：<font class="f3">275,844.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>渠道开发</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:34:34.583</div><fieldset class="f5">投入对:<font class="f4"> 武汉 </font> 下的 <font class="f4">零售渠道 </font> 的开发<br>扣除前现金余量: <font class="f1">275,844.31</font><br>扣除市场开发费用：<font class="f2">20,000.00</font><br>扣除后现金余量：<font class="f3">255,844.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>固定资产投资</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:34:48.74</div><fieldset class="f5">购买: <font class=f4>11759 </font>号柔性线<br>扣除前现金余量: <font class=f1>255,844.31</font><br>扣除设备购买费用：<font class=f2>120,000.00</font><br>扣除后现金余量：<font class=f3>135,844.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>资质认证</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:34:52.223</div><fieldset class="f5"><font class="f4">ISO9001  </font>资质追加了投入<br>扣除前现金余量: <font class="f1">135,844.31</font><br>扣除认证费用：<font class="f2">30,000.00</font><br>扣除后现金余量：<font class="f3">105,844.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>招聘生产工人</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:36:17.287</div><fieldset class="f5">人员招聘: <font class=f4>19930 </font>号生产工人<br>招聘前现金余量: <font class=f1>105,844.31</font><br>扣除招聘费用：<font class=f2>500.00</font><br>扣除后现金余量：<font class=f3>105,344.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>招聘生产工人</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:36:18.8</div><fieldset class="f5">人员招聘: <font class=f4>19931 </font>号生产工人<br>招聘前现金余量: <font class=f1>105,344.31</font><br>扣除招聘费用：<font class=f2>500.00</font><br>扣除后现金余量：<font class=f3>104,844.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>招聘生产工人</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:36:20.623</div><fieldset class="f5">人员招聘: <font class=f4>19932 </font>号生产工人<br>招聘前现金余量: <font class=f1>104,844.31</font><br>扣除招聘费用：<font class=f2>500.00</font><br>扣除后现金余量：<font class=f3>104,344.31</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>签订合同</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:36:27.537</div><fieldset class="f5">与<font class="f4">19930号生产工人、19931号生产工人、19932号生产工人</font>签订了劳动合同</fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:47:06.663</div><fieldset class="f5">采购原料： <font class="f4">玻璃包装纸</font><br>采购数量：                  <font class="f1">2550件</font><br>原始单价：                  <font class="f2">1.8000</font><br>折扣单价：<font class="f3">1.3500</font><br>单件税额：                  <font class="f1">0.2295</font><br>合计金额：                  <font class="f2">3,442.5000</font><br>合计税额：                  <font class="f1">585.2250</font><br>扣除前现金余量：            <font class="f1">104,344.31</font><br>扣除原料采购金额(价税合计)： <font class="f2">4,027.73</font><br>扣除后现金余量：             <font class="f3">100,316.58</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:47:06.687</div><fieldset class="f5">采购原料： <font class="f4">纸质包装盒</font>(应付帐款)<br>采购数量：                  <font class="f1">620件</font><br>原始单价：                  <font class="f2">4.2000</font><br>折扣单价：<font class="f3">3.7800</font><br>单件税额：                  <font class="f1">0.6426</font><br>合计金额：                  <font class="f2">2,343.6000</font><br>合计税额：                  <font class="f1">398.4120</font><br>产生应付账款：              <font class="f1">2,742.0120</font><br>采购款计入应付账款。<br>应付账款(价税合计)： <font class="f1">2,742.0120</font><br>付款时间：<font class="f1">3季度</font><br><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:47:06.69</div><fieldset class="f5">采购原料： <font class="f4">短平绒</font>(应付帐款)<br>采购数量：                  <font class="f1">3139件</font><br>原始单价：                  <font class="f2">11.0000</font><br>折扣单价：<font class="f3">8.2500</font><br>单件税额：                  <font class="f1">1.4025</font><br>合计金额：                  <font class="f2">25,896.7500</font><br>合计税额：                  <font class="f1">4,402.4475</font><br>产生应付账款：              <font class="f1">30,299.1975</font><br>采购款计入应付账款。<br>应付账款(价税合计)： <font class="f1">30,299.1975</font><br>付款时间：<font class="f1">3季度</font><br><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:47:06.697</div><fieldset class="f5">采购原料： <font class="f4">玫瑰绒</font>(应付帐款)<br>采购数量：                  <font class="f1">430件</font><br>原始单价：                  <font class="f2">21.0000</font><br>折扣单价：<font class="f3">19.9500</font><br>单件税额：                  <font class="f1">3.3915</font><br>合计金额：                  <font class="f2">8,578.5000</font><br>合计税额：                  <font class="f1">1,458.3450</font><br>产生应付账款：              <font class="f1">10,036.8450</font><br>采购款计入应付账款。<br>应付账款(价税合计)： <font class="f1">10,036.8450</font><br>付款时间：<font class="f1">3季度</font><br><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:47:06.703</div><fieldset class="f5">采购原料： <font class="f4">PP棉</font><br>采购数量：                  <font class="f1">3569件</font><br>原始单价：                  <font class="f2">16.0000</font><br>折扣单价：<font class="f3">12.0000</font><br>单件税额：                  <font class="f1">2.0400</font><br>合计金额：                  <font class="f2">42,828.0000</font><br>合计税额：                  <font class="f1">7,280.7600</font><br>扣除前现金余量：            <font class="f1">100,316.58</font><br>扣除原料采购金额(价税合计)： <font class="f2">50,108.76</font><br>扣除后现金余量：             <font class="f3">50,207.82</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>广告投入</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:47:55.763</div><fieldset class="f5">对产品<font class=f4>是111</font>投入广告费用：<font class=f1>0.00</font><br>对产品<font class=f4>是1111</font>投入广告费用：<font class=f1>0.00</font><br>对产品<font class=f4>紧211</font>投入广告费用：<font class=f1>24,000.00</font><br>对产品<font class=f4>紧1111</font>投入广告费用：<font class=f1>0.00</font><br>对产品<font class=f4>瓶1111</font>投入广告费用：<font class=f1>23,000.00</font><br>对产品<font class=f4>33112</font>投入广告费用：<font class=f1>0.00</font><br>合计广告投入：<font class="f3">47,000.00</font><br>扣除前现金余量: <font class="f1">50,207.82</font><br>扣除广告费用：<font class="f2">47,000.00</font><br>扣除后现金余量：<font class="f3">3,207.82</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:08.947</div><fieldset class="f5"><br>原料：<font class="f1">玻璃包装纸</font><br>投入：<font class="f2">1140</font>个<br>成本：<font class="f3">1.35/个</font><br>进项税：<font class="f1">0.23/个</font><br><br>原料：<font class="f1">短平绒</font><br>投入：<font class="f2">1140</font>个<br>成本：<font class="f3">8.23/个</font><br>进项税：<font class="f1">1.40/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">1140</font>个<br>成本：<font class="f3">11.98/个</font><br>进项税：<font class="f1">2.04/个</font><br><br><br>生产产品：  <font class="f4"> 是111</font><br>生产线   ：<font class="f1">11554号</font><br>生产数量：  <font class="f4"> 1140 </font><br>产品成本：  <font class="f4"> 21.56/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:16.2</div><fieldset class="f5"><br>原料：<font class="f1">玻璃包装纸</font><br>投入：<font class="f2">550</font>个<br>成本：<font class="f3">1.35/个</font><br>进项税：<font class="f1">0.23/个</font><br><br>原料：<font class="f1">短平绒</font><br>投入：<font class="f2">550</font>个<br>成本：<font class="f3">8.25/个</font><br>进项税：<font class="f1">1.40/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">550</font>个<br>成本：<font class="f3">12.00/个</font><br>进项税：<font class="f1">2.04/个</font><br><br>原料：<font class="f1">发声装置</font><br>投入：<font class="f2">550</font>个<br>成本：<font class="f3">2.25/个</font><br>进项税：<font class="f1">0.38/个</font><br><br><br>生产产品：  <font class="f4"> 是1111</font><br>生产线   ：<font class="f1">11554号</font><br>生产数量：  <font class="f4"> 550 </font><br>产品成本：  <font class="f4"> 23.85/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:28.113</div><fieldset class="f5"><br>原料：<font class="f1">纸质包装盒</font><br>投入：<font class="f2">110</font>个<br>成本：<font class="f3">3.78/个</font><br>进项税：<font class="f1">0.64/个</font><br><br>原料：<font class="f1">短平绒</font><br>投入：<font class="f2">110</font>个<br>成本：<font class="f3">8.25/个</font><br>进项税：<font class="f1">1.40/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">110</font>个<br>成本：<font class="f3">12.00/个</font><br>进项税：<font class="f1">2.04/个</font><br><br><br>生产产品：  <font class="f4"> 紧211</font><br>生产线   ：<font class="f1">11554号</font><br>生产数量：  <font class="f4"> 110 </font><br>产品成本：  <font class="f4"> 24.03/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:36.16</div><fieldset class="f5"><br>原料：<font class="f1">纸质包装盒</font><br>投入：<font class="f2">510</font>个<br>成本：<font class="f3">3.78/个</font><br>进项税：<font class="f1">0.64/个</font><br><br>原料：<font class="f1">短平绒</font><br>投入：<font class="f2">510</font>个<br>成本：<font class="f3">8.25/个</font><br>进项税：<font class="f1">1.40/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">510</font>个<br>成本：<font class="f3">12.00/个</font><br>进项税：<font class="f1">2.04/个</font><br><br><br>生产产品：  <font class="f4"> 紧211</font><br>生产线   ：<font class="f1">11555号</font><br>生产数量：  <font class="f4"> 510 </font><br>产品成本：  <font class="f4"> 24.03/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:41.01</div><fieldset class="f5"><br>原料：<font class="f1">玻璃包装纸</font><br>投入：<font class="f2">370</font>个<br>成本：<font class="f3">1.35/个</font><br>进项税：<font class="f1">0.23/个</font><br><br>原料：<font class="f1">短平绒</font><br>投入：<font class="f2">370</font>个<br>成本：<font class="f3">8.25/个</font><br>进项税：<font class="f1">1.40/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">370</font>个<br>成本：<font class="f3">12.00/个</font><br>进项税：<font class="f1">2.04/个</font><br><br>原料：<font class="f1">发声装置</font><br>投入：<font class="f2">370</font>个<br>成本：<font class="f3">2.25/个</font><br>进项税：<font class="f1">0.38/个</font><br><br><br>生产产品：  <font class="f4"> 紧1111</font><br>生产线   ：<font class="f1">11555号</font><br>生产数量：  <font class="f4"> 370 </font><br>产品成本：  <font class="f4"> 23.85/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:45.17</div><fieldset class="f5"><br>原料：<font class="f1">玻璃包装纸</font><br>投入：<font class="f2">490</font>个<br>成本：<font class="f3">1.35/个</font><br>进项税：<font class="f1">0.23/个</font><br><br>原料：<font class="f1">短平绒</font><br>投入：<font class="f2">490</font>个<br>成本：<font class="f3">8.25/个</font><br>进项税：<font class="f1">1.40/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">490</font>个<br>成本：<font class="f3">12.00/个</font><br>进项税：<font class="f1">2.04/个</font><br><br>原料：<font class="f1">发声装置</font><br>投入：<font class="f2">490</font>个<br>成本：<font class="f3">2.25/个</font><br>进项税：<font class="f1">0.38/个</font><br><br><br>生产产品：  <font class="f4"> 瓶1111</font><br>生产线   ：<font class="f1">11555号</font><br>生产数量：  <font class="f4"> 490 </font><br>产品成本：  <font class="f4"> 23.85/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>生产制造</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:48:48.42</div><fieldset class="f5"><br>原料：<font class="f1">金属包装盒</font><br>投入：<font class="f2">430</font>个<br>成本：<font class="f3">5.40/个</font><br>进项税：<font class="f1">0.92/个</font><br><br>原料：<font class="f1">玫瑰绒</font><br>投入：<font class="f2">430</font>个<br>成本：<font class="f3">19.95/个</font><br>进项税：<font class="f1">3.39/个</font><br><br>原料：<font class="f1">PP棉</font><br>投入：<font class="f2">430</font>个<br>成本：<font class="f3">12.00/个</font><br>进项税：<font class="f1">2.04/个</font><br><br>原料：<font class="f1">发声装置</font><br>投入：<font class="f2">430</font>个<br>成本：<font class="f3">2.25/个</font><br>进项税：<font class="f1">0.38/个</font><br><br>原料：<font class="f1">发光装置</font><br>投入：<font class="f2">430</font>个<br>成本：<font class="f3">4.32/个</font><br>进项税：<font class="f1">0.73/个</font><br><br><br>生产产品：  <font class="f4"> 33112</font><br>生产线   ：<font class="f1">11555号</font><br>生产数量：  <font class="f4"> 430 </font><br>产品成本：  <font class="f4"> 43.92/个</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>广告投入</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:49:00.143</div><fieldset class="f6">撤销了广告费用<br>撤销前现金余量: <font class="f1">3,207.82</font><br>撤销广告费用：<font class="f2">47,000.00</font><br>撤销后现金余量：<font class="f3">50,207.82</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>广告投入</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:49:00.19</div><fieldset class="f5">对产品<font class=f4>是111</font>投入广告费用：<font class=f1>3,207.00</font><br>对产品<font class=f4>是1111</font>投入广告费用：<font class=f1>0.00</font><br>对产品<font class=f4>紧211</font>投入广告费用：<font class=f1>24,000.00</font><br>对产品<font class=f4>紧1111</font>投入广告费用：<font class=f1>0.00</font><br>对产品<font class=f4>瓶1111</font>投入广告费用：<font class=f1>23,000.00</font><br>对产品<font class=f4>33112</font>投入广告费用：<font class=f1>0.00</font><br>合计广告投入：<font class="f3">50,207.00</font><br>扣除前现金余量: <font class="f1">50,207.82</font><br>扣除广告费用：<font class="f2">50,207.00</font><br>扣除后现金余量：<font class="f3">0.82</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:49:29.677</div><fieldset class="f5">订购原料：<font class="f4">金属包装盒</font>(原料订单)<br>订购数量：<font class="f1">1001件</font><br>到货周期：<font class="f1">3季度</font><br>支付账期：<font class="f2">3季度</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:49:29.68</div><fieldset class="f5">订购原料：<font class="f4">发声装置</font>(原料订单)<br>订购数量：<font class="f1">3500件</font><br>到货周期：<font class="f1">3季度</font><br>支付账期：<font class="f2">3季度</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>原料采购</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:49:29.68</div><fieldset class="f5">订购原料：<font class="f4">发光装置</font>(原料订单)<br>订购数量：<font class="f1">1001件</font><br>到货周期：<font class="f1">3季度</font><br>支付账期：<font class="f2">3季度</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单报价</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 14:50:18.193</div><fieldset class="f5">完成了订单报价.<br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.01</div><fieldset class="f5">成品成本—4388号厂房下-11554号设备<br>在制品数量:    <font class="f1">1800件</font><br>设备成品率：  <font class="f2">90.0%</font><br>设备折旧费：    <font class="f3">6,000.00</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.01</div><fieldset class="f5">成品成本—4388号厂房下-11554号设备<br>设备维护费：    <font class="f1">3,000.00</font><br>             <font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.03</div><fieldset class="f5">成品成本—4388号中型厂房<br>厂房季度租金：<font class="f1">5000.0</font><br>厂房内有在制品的设备数量：<font class="f1">2条</font><br>平均到11554号设备上的厂房租金：<font class="f1">2,500.00</font><br><font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.047</div><fieldset class="f5">成品成本—4388号厂房—11554号设备—所有工人<br>工人工资：<font class="f1">12,000.00</font><br>养老保险：<font class="f2">2,400.00</font><br>医疗保险：<font class="f3">1,380.00</font><br>失业保险：<font class="f1">240.00</font><br>工伤保险：<font class="f2">60.00</font><br>生育保险：<font class="f3">72.00</font><br>        <font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.067</div><fieldset class="f5">成品成本：<br>4388号厂房—11554号设备加工费用：     <font class="f1">2.00/个</font><br>合计在制品数量：     <font class="f1">1800件</font><br>合计加工费用：     <font class="f2">3,600.00</font><br>下线成品数量：     <font class="f3">1,620.00</font><br>合计需要分摊成本： <font class="f2">31,252.00</font><br>除原材料以外成本： <font class="f3">19.29</font>/个<br>                <font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.11</div><fieldset class="f5">成品成本—4388号厂房下-11555号设备<br>在制品数量:    <font class="f1">1800件</font><br>设备成品率：  <font class="f2">90.0%</font><br>设备折旧费：    <font class="f3">6,000.00</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.11</div><fieldset class="f5">成品成本—4388号厂房下-11555号设备<br>设备维护费：    <font class="f1">3,000.00</font><br>             <font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.123</div><fieldset class="f5">成品成本—4388号中型厂房<br>厂房季度租金：<font class="f1">5000.0</font><br>厂房内有在制品的设备数量：<font class="f1">2条</font><br>平均到11555号设备上的厂房租金：<font class="f1">2,500.00</font><br><font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.14</div><fieldset class="f5">成品成本—4388号厂房—11555号设备—所有工人<br>工人工资：<font class="f1">12,000.00</font><br>养老保险：<font class="f2">2,400.00</font><br>医疗保险：<font class="f3">1,380.00</font><br>失业保险：<font class="f1">240.00</font><br>工伤保险：<font class="f2">60.00</font><br>生育保险：<font class="f3">72.00</font><br>        <font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:07:23.163</div><fieldset class="f5">成品成本：<br>4388号厂房—11555号设备加工费用：     <font class="f1">2.00/个</font><br>合计在制品数量：     <font class="f1">1800件</font><br>合计加工费用：     <font class="f2">3,600.00</font><br>下线成品数量：     <font class="f3">1,620.00</font><br>合计需要分摊成本： <font class="f2">31,252.00</font><br>除原材料以外成本： <font class="f3">19.29</font>/个<br>                <font class="f8">本笔现金将在期末支付！</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:20.88</div><fieldset class="f5">订单号：  <font class="f4"> 29-103123</font><br>交付产品：<font class="f1">是111</font><br>交付数量：<font class="f2"> 261件</font><br>交付单价：<font class="f3"> 95.00</font><br>交付税额：<font class="f1"> 16.15元/件</font><br>交付前现金余量: <font class="f1">0.82</font><br>交付订单金额：<font class="f2">29,010.15</font><br>交付后现金余量：<font class="f3">29,010.97</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:20.91</div><fieldset class="f5">订单号：  <font class="f4"> 29-103124</font><br>交付产品：<font class="f1">是1111</font><br>交付数量：<font class="f2"> 242件</font><br>交付单价：<font class="f3"> 95.00</font><br>交付税额：<font class="f1"> 16.15元/件</font><br>交付前现金余量: <font class="f1">29,010.97</font><br>交付订单金额：<font class="f2">26,898.30</font><br>交付后现金余量：<font class="f3">55,909.27</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:20.95</div><fieldset class="f5">订单号：  <font class="f4"> 30-103185<br></font> 交付数量：<font class="f1"> 222 </font><br>交付产品：<font class="f2"> 紧211</font><br>订单付款账期：<font class="f3"> 1 </font><br><font class="f4">产生应收账款。</font><br>收款时间：<font class="f1">3季度</font><br>应收金额：<font class="f3">30,649.32</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:20.97</div><fieldset class="f5">订单号：  <font class="f4"> 30-103186<br></font> 交付数量：<font class="f1"> 128 </font><br>交付产品：<font class="f2"> 紧1111</font><br>订单付款账期：<font class="f3"> 1 </font><br><font class="f4">产生应收账款。</font><br>收款时间：<font class="f1">3季度</font><br>应收金额：<font class="f3">17,671.68</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:20.99</div><fieldset class="f5">订单号：  <font class="f4"> 49-103470<br></font> 交付数量：<font class="f1"> 151 </font><br>交付产品：<font class="f2"> 瓶1111</font><br>订单付款账期：<font class="f3"> 2 </font><br><font class="f4">产生应收账款。</font><br>收款时间：<font class="f1">4季度</font><br>应收金额：<font class="f3">25,617.15</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.01</div><fieldset class="f5">订单号：  <font class="f4"> 49-103471<br></font> 交付数量：<font class="f1"> 131 </font><br>交付产品：<font class="f2"> 33112</font><br>订单付款账期：<font class="f3"> 2 </font><br><font class="f4">产生应收账款。</font><br>收款时间：<font class="f1">4季度</font><br>应收金额：<font class="f3">22,224.15</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.027</div><fieldset class="f5">订单号：  <font class="f4"> 31-103264<br></font> 交付数量：<font class="f1"> 221 </font><br>交付产品：<font class="f2"> 是111</font><br>订单付款账期：<font class="f3"> 2 </font><br><font class="f4">产生应收账款。</font><br>收款时间：<font class="f1">4季度</font><br>应收金额：<font class="f3">25,857.00</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.04</div><fieldset class="f5">订单号：  <font class="f4"> 31-103265<br></font> 交付数量：<font class="f1"> 203 </font><br>交付产品：<font class="f2"> 是1111</font><br>订单付款账期：<font class="f3"> 2 </font><br><font class="f4">产生应收账款。</font><br>收款时间：<font class="f1">4季度</font><br>应收金额：<font class="f3">23,751.00</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.053</div><fieldset class="f5">订单号：  <font class="f4"> 32-103326</font><br>交付产品：<font class="f1">紧211</font><br>交付数量：<font class="f2"> 310件</font><br>交付单价：<font class="f3"> 118.00</font><br>交付税额：<font class="f1"> 20.06元/件</font><br>交付前现金余量: <font class="f1">55,909.27</font><br>交付订单金额：<font class="f2">42,798.60</font><br>交付后现金余量：<font class="f3">98,707.87</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.08</div><fieldset class="f5">订单号：  <font class="f4"> 32-103327</font><br>交付产品：<font class="f1">紧1111</font><br>交付数量：<font class="f2"> 180件</font><br>交付单价：<font class="f3"> 118.00</font><br>交付税额：<font class="f1"> 20.06元/件</font><br>交付前现金余量: <font class="f1">98,707.87</font><br>交付订单金额：<font class="f2">24,850.80</font><br>交付后现金余量：<font class="f3">123,558.67</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.107</div><fieldset class="f5">订单号：  <font class="f4"> 33-103407</font><br>交付产品：<font class="f1">瓶1111</font><br>交付数量：<font class="f2"> 287件</font><br>交付单价：<font class="f3"> 160.00</font><br>交付税额：<font class="f1"> 27.20元/件</font><br>交付前现金余量: <font class="f1">123,558.67</font><br>交付订单金额：<font class="f2">53,726.40</font><br>交付后现金余量：<font class="f3">177,285.07</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>订单交付</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:09:21.13</div><fieldset class="f5">订单号：  <font class="f4"> 33-103408</font><br>交付产品：<font class="f1">33112</font><br>交付数量：<font class="f2"> 255件</font><br>交付单价：<font class="f3"> 160.00</font><br>交付税额：<font class="f1"> 27.20元/件</font><br>交付前现金余量: <font class="f1">177,285.07</font><br>交付订单金额：<font class="f2">47,736.00</font><br>交付后现金余量：<font class="f3">225,021.07</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.633</div><fieldset class="f5">支付制造费用<br>支付前现金余量: <font class="f2">225,021.07</font><br>合计支付现金：  <font class="f3">50,504.00</font><br>支付后现金余量：<font class="f1">174,517.07</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.64</div><fieldset class="f5">支付管理人员工资和保险<br>结算前现金余量：  <font class="f1">174,517.07</font><br>    工资小计：   <font class="f2">10,000.00</font><br>养老保险小计:    <font class="f2">2,000.00</font><br>医疗保险小计:    <font class="f2">1,150.00</font><br>失业保险小计:    <font class="f2">200.00</font><br>工伤保险小计:    <font class="f2">50.00</font><br>生育保险小计:    <font class="f2">60.00</font><br>        合计:   <font class="f2">13,460.00</font><br>结算后现金余量： <font class="f3">161,057.07</font></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.663</div><fieldset class="f5">销售人员工资：<font class="f1">18000.0</font><br>销售人员养老保险：<font class="f2">3,600.00</font><br>销售人员医疗保险：<font class="f3">2,070.00</font><br>销售人员失业保险：<font class="f1">360.00</font><br>销售人员工伤保险：<font class="f2">90.00</font><br>销售人员生育保险：<font class="f3">108.00</font><br>保险合计：<font class="f2">6,228.00</font><br>工资和保险合计：<font class="f1">24,228.00</font><br>扣除前现金：    <font class="f2">161,057.07</font><br>合计扣除：      <font class="f3">24,228.00</font><br>扣除后现金余量：<font class="f3">136,829.07</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.68</div><fieldset class="f5">基本行政管理费用<br>扣除前现金余量：     <font class="f1">136,829.07</font><br>扣除基本行政管理费用：<font class="f2">13,000.00</font><br>扣除后现金余量：     <font class="f3">123,829.07</font><br></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.753</div><fieldset class="f6"><b><font class="f4">季度末公司现金：123,829.07</font></b></fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.8</div><fieldset class="f5">自动更新利润表。</fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.877</div><fieldset class="f5">自动更新资产负债表。</fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tablebodytext' style='background:ECD89B'>
+		<td><b>自动更新</b></td><td>2季度</td><td align=left><hr><div class=f7>2022-06-27 15:17:25.88</div><fieldset class="f6">自动更新季度末公司报表</fieldset><hr></td>
+		</tr>		
+		
+		<tr class='tabletitletext'><td colspan=15>符合条件的记录:69</td></tr>
+		</table>
+		
+
+
+		
+		</td>
+		<td width="29" background="/BSTCS/image/window/6.JPG">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="29" height="35" background="/BSTCS/image/window/7.JPG">
+		</td>
+		<td background="/BSTCS/image/window/8.JPG" height="35"></td>
+		<td width="29" height="35" background="/BSTCS/image/window/9.JPG">
+		</td>
+	</tr>
+</table>
+
+
+</BODY>
+</html>

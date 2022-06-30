@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 1000px;
+    z-index: -10;
+    zoom: 1;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+}
+
+.index {
+    width: 90%;
+    height: 240px;
+    margin: auto;
+    /*transform: translate(3%, 0%);*/
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+.connectionStatus {
+    float: right;
+    margin: 5px 20px 20px;
+
+}
+
+.login_titles {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #eee;
+}
+
+
+.login_user {
+    position: relative;
+    margin: 20px 0;
+    outline: none;
+    border: none;
+    padding: 7px 0px 7px 35px;
+    width: 20%;
+    font-family: "Microsoft soft", serif;
+    font-size: 14px;
+    opacity: 0.4;
+}
+
+.login_remenber {
+    font-family: "Microsoft soft", serif;
+    font-size: 14px;
+    color: #eee;
+}
+
+
+.submit {
+    width: 80px;
+    cursor: pointer;
+    background: #00a1ff;
+    opacity: 0.8;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 10px;
+}
+
+.Ribbon button {
+    width: 120px;
+    cursor: pointer;
+    background: #dc3907;
+    opacity: 0.8;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    height: 35px;
+    line-height: 30px;
+    font-family: 华文楷体, serif;
+    margin: 10px;
+}
+
+.Ribbon button:disabled {
+    background: #4d4d4d;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+
+.Ribbon select {
+    position: absolute;
+    left: 6%;
+    width: 120px;
+    cursor: pointer;
+    background: #59ffd9;
+    opacity: 0.8;
+    text-align: center;
+    color: #000000;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.Ribbon {
+    text-align: center
+}
+
+.hd {
+
+}
+
+.lsjc {
+    width: 50%;
+    height: 630px;
+    position: relative;
+    left: 23%;
+}
