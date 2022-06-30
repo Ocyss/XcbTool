@@ -13,7 +13,7 @@
 web使用flask搭建
 
 
-<img src="imgs/1.png">
-<img src="imgs/2.png">
-<img src="imgs/3.png">
+<img src="https://static01.imgkr.com/temp/a066abd9143a4f919bd0940b6b5a8ae7.png">
+<img src="https://s3.bmp.ovh/imgs/2022/06/30/79644bedb4a8b649.png">
+<img src="https://s3.bmp.ovh/imgs/2022/06/30/b16f5495eba0e57b.png">
 
