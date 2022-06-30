@@ -120,3 +120,17 @@
     position: relative;
     left: 23%;
 }
+
+.joe_footer {
+    text-align: center;
+    background-color: rgba(255, 206, 223, 0.65);
+}
+
+.joe_footer p {
+
+    color: #003cff;
+}
+
+.joe_footer p a {
+    color: #8f00ff;
+}
