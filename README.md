@@ -13,7 +13,6 @@
 web使用flask搭建
 
 
-<img src="https://static01.imgkr.com/temp/a066abd9143a4f919bd0940b6b5a8ae7.png">
-<img src="https://s3.bmp.ovh/imgs/2022/06/30/79644bedb4a8b649.png">
-<img src="https://s3.bmp.ovh/imgs/2022/06/30/b16f5495eba0e57b.png">
-
+[![jKLo5j.png](https://s1.ax1x.com/2022/06/30/jKLo5j.png)](https://imgtu.com/i/jKLo5j)
+[![jKL7Ps.png](https://s1.ax1x.com/2022/06/30/jKL7Ps.png)](https://imgtu.com/i/jKL7Ps)
+[![jKLIaQ.png](https://s1.ax1x.com/2022/06/30/jKLIaQ.png)](https://imgtu.com/i/jKLIaQ)
